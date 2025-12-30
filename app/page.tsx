@@ -111,7 +111,7 @@ export default function Home() {
 
         </p>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap mb-8 gap-3">
             <a
               href="#proyectos"
               className="rounded-xl bg-[#0F3D2E] px-5 py-3 text-sm font-medium hover:bg-[#145A43] transition"
