@@ -115,22 +115,18 @@ export default function Home() {
             <a
               href="#proyectos"
               className="rounded-xl bg-[#0F3D2E] px-5 py-3 text-sm font-medium hover:bg-[#145A43] transition"
-            >
+              >
               Ver proyectos
             </a>
             <a
               href="/cv.pdf"
-              className="rounded-xl border border-white/10 px-5 py-3 text-sm font-medium hover:border-white/20 transition"
-            >
+              className="inline-flex items-center rounded-lg border border-white/10 bg-[#0B0E11] px-3 py-2 text-xs text-[#B5B8BC] hover:border-white/20"
+              >
               Descargar CV
             </a>
           </div>
 
-          <div className="flex flex-wrap gap-3 pt-2 pb-8 text-sm text-[#B5B8BC]">
-            <span className="rounded-full border border-white/10 px-3 py-1">Málaga / Remoto</span>
-            <span className="rounded-full border border-white/10 px-3 py-1">Python · AWS · React</span>
-            <span className="rounded-full border border-white/10 px-3 py-1">Orientado a producto</span>
-          </div>
+          
         </motion.section>
 
                 {/* ABOUT MINI */}
