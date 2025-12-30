@@ -164,19 +164,26 @@ export default function Home() {
             <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-[#B5B8BC]">
               AWS · despliegue real
             </span>
+            
           </div>
 
           <ul className="mt-5 grid gap-3 md:grid-cols-3 text-sm text-[#B5B8BC]">
+            <li className="rounded-xl border border-white/10 bg-[#0B0E11] p-4 space-y-2">
+              <p>
+                <span className="text-[#C9A24D]">Base:</span> DAW + especialización en IA
+                y Big Data.
+              </p>
+              <p className=" text-[#B5B8BC]">
+                <span className="text-[#C9A24D]">Idiomas:</span> Español (nativo) · English (B2).
+              </p>
+            </li>
             <li className="rounded-xl border border-white/10 bg-[#0B0E11] p-4">
               <span className="text-[#C9A24D]">Foco:</span> proyectos end-to-end
               (datos → modelo → app → deploy).
             </li>
+            
             <li className="rounded-xl border border-white/10 bg-[#0B0E11] p-4">
-              <span className="text-[#C9A24D]">Base:</span> DAW + especialización en IA
-              y Big Data.
-            </li>
-            <li className="rounded-xl border border-white/10 bg-[#0B0E11] p-4">
-              <span className="text-[#C9A24D]">Ahora:</span> buscando prácticas o
+              <span className="text-[#C9A24D]">Ahora:</span> esperando periodo de prácticas y realizando
               proyectos donde aportar impacto real.
             </li>
           </ul>
