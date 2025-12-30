@@ -154,17 +154,20 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-5 flex flex-wrap gap-2">
-            <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-[#B5B8BC]">
-              IA aplicada · ML · OCR/LLMs
-            </span>
-            <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-[#B5B8BC]">
-              Full Stack · APIs · Next.js
-            </span>
-            <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-[#B5B8BC]">
-              AWS · despliegue real
-            </span>
-            
+         <div className="mt-6 flex flex-wrap gap-2">
+            {[
+              "IA aplicada · ML / LLMs",
+              "Big Data · pipelines · datos",
+              "Python · AWS · React",
+              "Remoto · Málaga",
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-white/10 px-3 py-1 text-xs text-[#B5B8BC]"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
 
           <ul className="mt-5 grid gap-3 md:grid-cols-3 text-sm text-[#B5B8BC]">
