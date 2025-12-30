@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://manuelp.com"),
+  alternates: {
+    canonical: "https://manuelp.com",
+  },
   title: {
     default: "Manuel Peña · Full-Stack + IA & Big Data",
     template: "%s · Manuel Peña",
@@ -25,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "Proyectos end-to-end: datos → modelo → app → despliegue. Full-Stack + IA & Big Data.",
     url: "https://manuelp.com",
-    siteName: "Manuel Peña",
+    siteName: "manuelp.com",
     locale: "es_ES",
     type: "website",
     images: [
@@ -62,3 +65,4 @@ export default function RootLayout({
     </html>
   );
 }
+

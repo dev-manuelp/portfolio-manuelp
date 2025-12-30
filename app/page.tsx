@@ -107,7 +107,8 @@ export default function Home() {
           </h1>
 
          <p className="max-w-2xl text-lg text-[#B5B8BC]">
-          IA aplicada + desarrollo web con foco en producto y despliegue real.
+          IA aplicada al desarrollo Full-Stack con impacto real.
+
         </p>
 
           <div className="flex flex-wrap gap-3">
@@ -141,7 +142,7 @@ export default function Home() {
           className="mt-2 rounded-2xl border border-white/10 bg-[#161A1E] p-6"
         >
           <div className="space-y-3">
-            <h2 className="text-xl font-semibold text-[#145A43]">
+            <h2 className="text-lg font-semibold text-[#145A43] tracking-wide">
               Sobre mí
             </h2>
 
