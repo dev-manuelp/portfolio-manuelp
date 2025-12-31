@@ -74,15 +74,24 @@ const certs: Cert[] = [
 
 export default function Home() {
   const [openCert, setOpenCert] = useState<null | Cert>(null);
+  const [openCV, setOpenCV] = useState(false);
+  const [openContact, setOpenContact] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const email = "manuelp.dev@gmail.com";
 
   const certsSorted = [...certs].sort(
   (a, b) => Number(Boolean(b.verify)) - Number(Boolean(a.verify))
   );
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpenCert(null);
-    };
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+        setOpenCert(null);
+        setOpenCV(false);
+        setOpenContact(false);
+        }
+      };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
@@ -111,20 +120,23 @@ export default function Home() {
 
         </p>
 
-          <div className="flex flex-wrap mb-8 gap-3">
+        <div className="flex flex-wrap mb-8 gap-3">
             <a
               href="#proyectos"
               className="rounded-xl bg-[#0F3D2E] px-5 py-3 text-sm font-medium hover:bg-[#145A43] transition"
-              >
+            >
               Ver proyectos
             </a>
-            <a
-              href="/cv.pdf"
-              className="inline-flex items-center rounded-lg border border-white/10 bg-[#0B0E11] px-3 py-2 text-xs text-[#B5B8BC] hover:border-white/20"
-              >
-              Descargar CV
-            </a>
-          </div>
+
+            <button
+              type="button"
+              onClick={() => setOpenCV(true)}
+              className="inline-flex items-center rounded-lg border border-white/10 bg-[#0B0E11] px-3 py-2 text-xs text-[#B5B8BC] hover:border-white/20 transition"
+            >
+              Mostrar CV
+            </button>
+
+        </div>
 
           
         </motion.section>
@@ -379,6 +391,145 @@ export default function Home() {
           </div>
         )}
 
+        {/* MODAL CV */}
+            {openCV && (
+              <div
+                className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
+                onClick={() => setOpenCV(false)}
+              >
+                <div
+                  className="w-full max-w-4xl rounded-2xl border border-white/10 bg-[#0B0E11] overflow-hidden"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex items-start justify-between gap-4 p-5 border-b border-white/10">
+                    <div>
+                      <div className="text-sm text-[#B5B8BC]">Currículum</div>
+                      <div className="text-lg font-semibold">CV · Manuel Peña</div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <a
+                        className="rounded-xl border border-[#C9A24D]/60 px-3 py-2 text-sm text-[#EDEDED] hover:border-[#C9A24D] transition"
+                        href="/cv.pdf"
+                        download
+                      >
+                        Descargar ↧
+                      </a>
+
+                      <button
+                        type="button"
+                        className="rounded-xl border border-white/10 px-3 py-2 text-sm text-[#B5B8BC] hover:border-white/20 hover:text-[#EDEDED] transition"
+                        onClick={() => setOpenCV(false)}
+                      >
+                        Cerrar
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <div className="rounded-xl border border-white/10 overflow-hidden bg-black">
+                      <iframe
+                        src="/cv.pdf#view=FitH"
+                        title="CV Manuel Peña"
+                        className="w-full h-[72vh]"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <p className="mt-4 text-xs text-[#B5B8BC] text-center">
+                      Pulsa <span className="text-[#C9A24D]">Esc</span> o haz click fuera para cerrar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+        {/* MODAL CONTACTO */}
+            {openContact && (
+              <div
+                className="fixed inset-0 z-[70] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
+                onClick={() => setOpenContact(false)}
+              >
+                <div
+                  className="w-full max-w-xl rounded-2xl border border-white/10 bg-[#0B0E11] overflow-hidden"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex items-start justify-between gap-4 p-5 border-b border-white/10">
+                    <div>
+                      <div className="text-sm text-[#B5B8BC]">Contacto</div>
+                      <div className="text-lg font-semibold">Escríbeme</div>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="rounded-xl border border-white/10 px-3 py-2 text-sm text-[#B5B8BC] hover:border-white/20 hover:text-[#EDEDED] transition"
+                      onClick={() => setOpenContact(false)}
+                    >
+                      Cerrar
+                    </button>
+                  </div>
+
+                  <div className="p-5 space-y-4">
+                    {/* Email + copiar */}
+                    <div className="rounded-2xl border border-white/10 bg-[#161A1E] p-4">
+                      <div className="text-xs text-[#B5B8BC] mb-2">Email</div>
+
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="font-medium text-[#EDEDED] break-all">{email}</div>
+
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            try {
+                              await navigator.clipboard.writeText(email);
+                              setCopied(true);
+                              setTimeout(() => setCopied(false), 1400);
+                            } catch {
+                              // fallback: abre mail si el clipboard falla
+                              window.location.href = `mailto:${email}`;
+                            }
+                          }}
+                          className="shrink-0 rounded-xl border border-white/10 px-3 py-2 text-sm text-[#B5B8BC] hover:border-white/20 hover:text-[#EDEDED] transition"
+                          title="Copiar email"
+                        >
+                          {copied ? "Copiado ✓" : "Copiar"}
+                        </button>
+                      </div>
+
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <a
+                          href={`mailto:${email}`}
+                          className="rounded-lg border border-white/10 px-3 py-2 text-xs text-[#B5B8BC] hover:border-white/20 hover:text-[#EDEDED] transition"
+                        >
+                          Abrir email ↗
+                        </a>
+                        <a
+                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-lg border border-white/10 px-3 py-2 text-xs text-[#B5B8BC] hover:border-white/20 hover:text-[#EDEDED] transition"
+                        >
+                          Gmail ↗
+                        </a>
+                        <a
+                          href={`https://outlook.office.com/mail/deeplink/compose?to=${encodeURIComponent(email)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-lg border border-white/10 px-3 py-2 text-xs text-[#B5B8BC] hover:border-white/20 hover:text-[#EDEDED] transition"
+                        >
+                          Outlook ↗
+                        </a>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-[#B5B8BC] text-center">
+                      Pulsa <span className="text-[#C9A24D]">Esc</span> o haz click fuera para cerrar.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+
         <div className="my-12 h-px bg-white/10" />
 
         {/* CONTACTO */}
@@ -387,14 +538,18 @@ export default function Home() {
             Contacto <span className="text-[#145A43]">rápido</span>
           </h2>
           <p className="text-[#B5B8BC]">
-            Si quieres ver demos, repos o hablar de prácticas/proyectos, escríbeme.
+            
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <a className="rounded-xl bg-[#0F3D2E] px-5 py-3 text-sm font-medium hover:bg-[#145A43] transition" href="mailto:manuelp.dev@gmail.com">
+            <button
+              type="button"
+              onClick={() => setOpenContact(true)}
+              className="rounded-xl bg-[#0F3D2E] px-5 py-3 text-sm font-medium hover:bg-[#145A43] transition"
+            >
               Email
-            </a>
-            <a className="rounded-xl border border-white/10 px-5 py-3 text-sm hover:border-white/20 transition" href="https://linkedin.com/in/manuel-peña-7b5608271/" target="_blank" rel="noreferrer">
+            </button>
+            <a className="rounded-xl border border-white/10 px-5 py-3 text-sm hover:border-white/20 transition" href="https://linkedin.com/in/manuelp-dev/" target="_blank" rel="noreferrer">
               LinkedIn ↗
             </a>
             <a className="rounded-xl border border-white/10 px-5 py-3 text-sm hover:border-white/20 transition" href="https://github.com/dev-manuelp" target="_blank" rel="noreferrer">
@@ -412,7 +567,7 @@ export default function Home() {
           <div className="flex gap-4">
             <a className="hover:text-[#EDEDED]" href="mailto:manuelp.dev@gmail.com">Email</a>
             <a className="hover:text-[#EDEDED]" href="https://github.com/dev-manuelp" target="_blank" rel="noreferrer">GitHub</a>
-            <a className="hover:text-[#EDEDED]" href="https://linkedin.com/in/manuel-peña-7b5608271/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a className="hover:text-[#EDEDED]" href="https://linkedin.com/in/manuelp-dev/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </footer>
       </div>
