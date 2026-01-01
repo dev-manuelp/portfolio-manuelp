@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 
+// Zona Diccionario
+
 type Project = {
   title: string;
   desc: string;
@@ -12,6 +14,8 @@ type Project = {
   github: string;
   demo: string;
 };
+
+// Zona inventario
 
 type Cert = {
   name: string;
@@ -72,7 +76,14 @@ const certs: Cert[] = [
   },
 ];
 
+// ------------------  COMPONENTE PRINCIPAL  ------------------
+
+
+
 export default function Home() {
+
+  // Estados de memoria, Cert, CV, Contact, Copiado mail
+
   const [openCert, setOpenCert] = useState<null | Cert>(null);
   const [openCV, setOpenCV] = useState(false);
   const [openContact, setOpenContact] = useState(false);
@@ -80,9 +91,12 @@ export default function Home() {
 
   const email = "manuelp.dev@gmail.com";
 
+  // Ordea los certificacion, primeros los que tienen link de verificación
   const certsSorted = [...certs].sort(
   (a, b) => Number(Boolean(b.verify)) - Number(Boolean(a.verify))
   );
+
+  // EFECTO - ESC=cerrar modal
 
   useEffect(() => {
       const onKey = (e: KeyboardEvent) => {
@@ -96,18 +110,22 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+   // Vista pagina  - HTML + TAilWIND
+
   return (
     <main className="min-h-screen bg-[#0B0E11] text-[#EDEDED]">
       <Navbar />
 
-      <div className="mx-auto max-w-5xl px-6 py-8">
-        {/* HERO */}
-        <motion.section
+    <div className="mx-auto max-w-5xl px-6 py-8">
+
+      {/* HERO - Titulo principal */}
+
+      <motion.section
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="space-y-6"
-        >
+      >
       
 
           <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
@@ -115,10 +133,10 @@ export default function Home() {
             <span className="text-[#145A43]">.</span>
           </h1>
 
-         <p className="max-w-2xl text-lg text-[#B5B8BC]">
-          IA aplicada al desarrollo Full-Stack con impacto real.
+          <p className="max-w-2xl text-lg text-[#B5B8BC]">
+            IA aplicada al desarrollo Full-Stack con impacto real.
 
-        </p>
+          </p>
 
         <div className="flex flex-wrap mb-8 gap-3">
             <a
@@ -138,10 +156,13 @@ export default function Home() {
 
         </div>
 
-          
+        
         </motion.section>
 
-                {/* ABOUT MINI */}
+
+      {/* ABOUT MINI - Sección sobre mí */}
+
+
         <motion.section
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -200,10 +221,14 @@ export default function Home() {
           </ul>
         </motion.section>
 
+        
+        {/* Linea fina para marcar separación*/}
 
         <div className="my-12 h-px bg-white/10" />
 
-        {/* PROYECTOS */}
+        {/* PROYECTOS - Sección proyectos destacados*/}
+
+
         <section id="proyectos" className="scroll-mt-24 space-y-6">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-semibold">
@@ -218,6 +243,8 @@ export default function Home() {
               Ver GitHub ↗
             </a>
           </div>
+
+            {/* Bucle recorre la lista de projects y crea tarjeta para cada uno */}
 
           <div className="grid gap-5 md:grid-cols-2">
             {projects.map((p) => (
@@ -269,7 +296,8 @@ export default function Home() {
 
         <div className="my-12 h-px bg-white/10" />
 
-        {/* SKILLS */}
+        {/* SKILLS - Sección skills */}
+
         <section id="skills" className="scroll-mt-24 space-y-6">
           <h2 className="text-2xl font-semibold">
             Skills <span className="text-[#145A43]">clave</span>
@@ -294,7 +322,8 @@ export default function Home() {
 
         <div className="my-12 h-px bg-white/10" />
 
-        {/* CERTIFICACIONES */}
+        {/* CERTIFICACIONES - Sección certificados */}
+
         <section id="certificaciones" className="scroll-mt-24 space-y-6">
           <h2 className="text-2xl font-semibold">
             Certificaciones <span className="text-[#C9A24D]">y cursos</span>
@@ -333,7 +362,10 @@ export default function Home() {
           </p>
         </section>
 
-        {/* MODAL */}
+        {/* ------------------------------------- MODALES -------------------------------------  */}
+
+             {/* ---------- Modal CERTIFICDO IND ----------  */}
+
         {openCert && (
           <div
             className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
@@ -391,7 +423,8 @@ export default function Home() {
           </div>
         )}
 
-        {/* MODAL CV */}
+        {/* ---------- Modal MOSTRAR CV (PDF) ----------  */}
+
             {openCV && (
               <div
                 className="fixed inset-0 z-[60] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
@@ -443,7 +476,10 @@ export default function Home() {
                 </div>
               </div>
             )}
-        {/* MODAL CONTACTO */}
+
+
+        {/* ---------- Modal CONTACTO ----------  */}
+
             {openContact && (
               <div
                 className="fixed inset-0 z-[70] bg-black/70 backdrop-blur-sm flex items-center justify-center p-6"
@@ -532,7 +568,8 @@ export default function Home() {
 
         <div className="my-12 h-px bg-white/10" />
 
-        {/* CONTACTO */}
+        {/* CONTACTO -- Sección inferior botones -- */}
+
         <section id="contacto" className="space-y-3">
           <h2 className="text-2xl font-semibold">
             Contacto <span className="text-[#145A43]">rápido</span>
@@ -558,7 +595,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FOOTER */}
+        {/* -------------- FOOTER -------------- */}
+
         <footer className="mt-16 pt-10 border-t border-white/10 text-sm text-[#B5B8BC] flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
           <div>
             © {new Date().getFullYear()} Manuel Peña ·{" "}
