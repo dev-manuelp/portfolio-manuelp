@@ -26,19 +26,19 @@ type Cert = {
 
 const projects: Project[] = [
   {
-    title: "Analizador de Suplementos con IA",
-    desc: "OCR + LLM para leer etiquetas y devolver un resumen útil (ingredientes, advertencias, etc.).",
-    impact: "Reduce tiempo de análisis manual y mejora la interpretación de ingredientes.",
-    tags: ["AWS", "Rekognition", "Flask"],
-    github: "",
+    title: "Smart Supplement Scanner",
+    desc: "App End-to-End que combina Visión Artificial (AWS) y GenAI para analizar suplementos a partir de fotos.",
+    impact: "Integra Cloud + LLMs para interpretar etiquetas complejas y dar consejo nutricional instantáneo.",
+    tags: ["AWS Rekognition", "Python", "Gradio", "GenAI"],
+    github: "https://github.com/dev-manuelp/smart-supplement-scanner",
     demo: "",
   },
   {
-    title: "German Risk / Telco ML",
-    desc: "Pipeline de ML con entrenamiento, evaluación y app para predicción.",
-    impact: "Estandariza el flujo de ML: dataset → modelo → métricas → predicción en app.",
-    tags: ["Python", "scikit-learn", "Streamlit"],
-    github: "",
+    title: "German Credit Risk System",
+    desc: "Pipeline de Machine Learning completo para predicción de riesgo bancario, optimizado para Recall.",
+    impact: "Estandariza el flujo MLOps: Procesamiento de datos → Modelo predictivo → Interfaz de negocio.",
+    tags: ["Python", "Scikit-learn", "Streamlit", "Pandas"],
+    github: "https://github.com/dev-manuelp/german-credit-risk",
     demo: "",
   },
 ];
