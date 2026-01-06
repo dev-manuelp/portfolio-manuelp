@@ -12,7 +12,7 @@ type Project = {
   impact: string;
   tags: string[];
   github: string;
-  demo: string;
+  video: string;
 };
 
 // Zona inventario
@@ -31,7 +31,7 @@ const projects: Project[] = [
     impact: "Integra Cloud + LLMs para interpretar etiquetas complejas y dar consejo nutricional instantáneo.",
     tags: ["AWS Rekognition", "Python", "Gradio", "GenAI"],
     github: "https://github.com/dev-manuelp/smart-supplement-scanner",
-    demo: "",
+    video: "/demos/SPL.gif",
   },
   {
     title: "German Credit Risk System",
@@ -39,7 +39,7 @@ const projects: Project[] = [
     impact: "Estandariza el flujo MLOps: Procesamiento de datos → Modelo predictivo → Interfaz de negocio.",
     tags: ["Python", "Scikit-learn", "Streamlit", "Pandas"],
     github: "https://github.com/dev-manuelp/german-credit-risk",
-    demo: "",
+    video: "/demos/german.gif",
   },
 ];
 
@@ -88,6 +88,7 @@ export default function Home() {
   const [openCV, setOpenCV] = useState(false);
   const [openContact, setOpenContact] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [openVideo, setOpenVideo] = useState<null | Project>(null); //
 
   const email = "manuelp.dev@gmail.com";
 
@@ -272,15 +273,20 @@ export default function Home() {
                   ))}
                 </div>
 
-                <div className="mt-5 flex gap-4 text-sm">
-                  {p.demo ? (
-                    <a className="text-[#C9A24D] hover:underline" href={p.demo} target="_blank" rel="noreferrer">
-                      Demo ↗
-                    </a>
+                <div className="mt-5 flex items-center justify-between text-sm">
+                  {/* Botón VER USO (Abre Modal) */}
+                  {p.video ? (
+                    <button
+                      onClick={() => setOpenVideo(p)}
+                      className="text-[#C9A24D] hover:underline flex items-center gap-1"
+                    >
+                      Ver Uso ▷
+                    </button>
                   ) : (
                     <span className="text-[#B5B8BC]">Demo (próximamente)</span>
                   )}
 
+                  {/* Botón GITHUB */}
                   {p.github ? (
                     <a className="text-[#B5B8BC] hover:text-[#EDEDED]" href={p.github} target="_blank" rel="noreferrer">
                       GitHub ↗
@@ -476,6 +482,47 @@ export default function Home() {
                 </div>
               </div>
             )}
+
+            {/* ---------- Modal VIDEO DEMO ----------  */}
+
+        {openVideo && (
+          <div
+            className="fixed inset-0 z-[80] bg-black/80 backdrop-blur-sm flex items-center justify-center p-6"
+            onClick={() => setOpenVideo(null)}
+          >
+            <div
+              className="w-full max-w-4xl rounded-2xl border border-white/10 bg-[#0B0E11] overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start justify-between gap-4 p-5 border-b border-white/10 bg-[#161A1E]">
+                <div>
+                  <div className="text-sm text-[#B5B8BC]">Demostración de uso</div>
+                  <div className="text-lg font-semibold text-[#EDEDED]">{openVideo.title}</div>
+                </div>
+                <button
+                  type="button"
+                  className="rounded-xl border border-white/10 px-3 py-2 text-sm text-[#B5B8BC] hover:border-white/20 hover:text-[#EDEDED] transition bg-[#0B0E11]"
+                  onClick={() => setOpenVideo(null)}
+                >
+                  Cerrar
+                </button>
+              </div>
+
+              <div className="p-0 bg-black flex justify-center items-center min-h-[300px]">
+                {/* GIF o Imagen */}
+                <img 
+                  src={openVideo.video} 
+                  alt={`Demo de ${openVideo.title}`}
+                  className="w-full h-auto max-h-[70vh] object-contain"
+                />
+              </div>
+              
+              <div className="p-3 text-xs text-[#B5B8BC] text-center bg-[#161A1E] border-t border-white/10">
+                Pulsa <span className="text-[#C9A24D]">Esc</span> o haz click fuera para cerrar.
+              </div>
+            </div>
+          </div>
+        )}
 
 
         {/* ---------- Modal CONTACTO ----------  */}
