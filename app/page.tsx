@@ -25,6 +25,16 @@ type Cert = {
 };
 
 const projects: Project[] = [
+
+  {
+    title: "Recetario Inteligente (GenAI)",
+    desc: "PWA Mobile-First que digitaliza recetas manuscritas mediante Visión Artificial (Gemini-flash-latest) y Supabase.",
+    impact: "Convierte datos no estructurados (fotos) en base de datos consultable con UX nativa tipo iOS.",
+    tags: ["Next.js 14", "Supabase", "Gemini AI", "Tailwind"],
+    github: "https://github.com/dev-manuelp/recetario-publico",
+    video: "", 
+  },
+
   {
     title: "Smart Supplement Scanner",
     desc: "App End-to-End que combina Visión Artificial (AWS) y GenAI para analizar suplementos a partir de fotos.",
