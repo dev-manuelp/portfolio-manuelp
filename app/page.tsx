@@ -60,6 +60,12 @@ const skills = [
 ];
 
 const certs: Cert[] = [
+   {
+    name: "AWS Academy Graduate - Machine Learning Foundations - Training Badge",
+    issuer: "Amazon Web Services",
+    verify: "https://www.credly.com/badges/5d972f43-e9a0-495d-b876-1a2277c4a120/public_url",
+    image: "/certs/aws-academy-graduate-machine-learning-foundations-t.png",
+  },
   {
     name: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services",
