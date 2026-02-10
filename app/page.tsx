@@ -32,7 +32,7 @@ const projects: Project[] = [
     impact: "Convierte datos no estructurados (fotos) en base de datos consultable con UX nativa tipo iOS.",
     tags: ["Next.js 14", "Supabase", "Gemini AI", "Tailwind"],
     github: "https://github.com/dev-manuelp/recetario-publico",
-    video: "", 
+    video: "/demos/Recetario_Demo.mp4", 
   },
 
   {
