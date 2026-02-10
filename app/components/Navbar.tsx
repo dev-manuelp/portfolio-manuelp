@@ -63,8 +63,8 @@ export default function Navbar() {
                 : "bg-[#0F3D2E]/20",
             ].join(" ")}
         >
-        <div className="mx-auto max-w-5xl px-6 py-3 flex items-center justify-between">
-          <a href="#" className="font-semibold tracking-tight">
+        <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
+          <a href="#" className="text-2xl font-bold tracking-tighter hover:opacity-80 transition">
             <span className="text-[#EDEDED]">manuelp</span>
             <span className="text-[#C9A24D]">.</span>
           </a>

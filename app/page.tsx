@@ -191,7 +191,7 @@ export default function Home() {
               Sobre mí
             </h2>
 
-            <p className="text-sm text-[#B5B8BC] max-w-2xl">
+            <p className="text-lg text-[#B5B8BC] max-w-3xl leading-relaxed">
               Actualmente cursando el Máster de Especialización en IA y Big Data. <br></br>
               Combino la solidez del desarrollo Full Stack con los nuevos paradigmas de la
               Inteligencia Artificial para diseñar soluciones que no solo ejecutan tareas,
@@ -208,14 +208,14 @@ export default function Home() {
             ].map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-white/10 px-3 py-1 text-xs text-[#B5B8BC]"
+                className="rounded-full border border-white/10 px-4 py-1.5 text-sm text-[#B5B8BC]"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <ul className="mt-5 grid gap-3 md:grid-cols-3 text-sm text-[#B5B8BC]">
+          <ul className="mt-8 grid gap-4 md:grid-cols-3 text-base text-[#B5B8BC]">
             <li className="rounded-xl border border-white/10 bg-[#0B0E11] p-4 space-y-2">
               <p>
                 <span className="text-[#C9A24D]">Base:</span> DAW + especialización en IA
