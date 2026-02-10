@@ -133,7 +133,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#0B0E11] text-[#EDEDED]">
       <Navbar />
 
-    <div className="mx-auto max-w-5xl px-6 py-8">
+    <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
 
       {/* HERO - Titulo principal */}
 
@@ -145,14 +145,13 @@ export default function Home() {
       >
       
 
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
             Full-Stack + <span className="text-[#C9A24D]">IA & Big Data</span>
             <span className="text-[#145A43]">.</span>
           </h1>
 
-          <p className="max-w-2xl text-lg text-[#B5B8BC]">
+          <p className="max-w-3xl text-xl md:text-2xl text-[#B5B8BC] leading-relaxed">
             IA aplicada al desarrollo Full-Stack con impacto real.
-
           </p>
 
         <div className="flex flex-wrap mb-8 gap-3">
@@ -272,10 +271,13 @@ export default function Home() {
                 className="rounded-2xl border border-white/10 bg-[#161A1E] p-6 transition
                            hover:border-[#C9A24D]/40 hover:shadow-[0_0_0_1px_rgba(201,162,77,0.12),0_18px_60px_rgba(0,0,0,0.55)]"
               >
-                <h3 className="text-lg font-semibold">{p.title}</h3>
-                <p className="mt-2 text-sm text-[#B5B8BC]">{p.desc}</p>
-                <p className="mt-3 text-sm text-[#EDEDED]">
-                  <span className="text-[#C9A24D]">Impacto:</span> {p.impact}
+               <h3 className="text-2xl font-bold text-[#EDEDED]">{p.title}</h3>
+                
+                
+                <p className="mt-3 text-base text-[#B5B8BC] leading-relaxed">{p.desc}</p>
+                
+                <p className="mt-4 text-base text-[#EDEDED]">
+                  <span className="text-[#C9A24D] font-medium">Impacto:</span> {p.impact}
                 </p>
 
                 <div className="mt-4 flex flex-wrap gap-2">
