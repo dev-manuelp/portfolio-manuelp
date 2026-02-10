@@ -525,12 +525,23 @@ export default function Home() {
               </div>
 
               <div className="p-0 bg-black flex justify-center items-center min-h-[300px]">
-                {/* GIF o Imagen */}
-                <img 
-                  src={openVideo.video} 
-                  alt={`Demo de ${openVideo.title}`}
-                  className="w-full h-auto max-h-[70vh] object-contain"
-                />
+                {/* Lógica: Si es MP4 usa video, si no imagen (GIF) */}
+                {openVideo.video.endsWith(".mp4") ? (
+                  <video
+                    src={openVideo.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto max-h-[70vh] object-contain"
+                  />
+                ) : (
+                  <img 
+                    src={openVideo.video} 
+                    alt={`Demo de ${openVideo.title}`}
+                    className="w-full h-auto max-h-[70vh] object-contain"
+                  />
+                )}
               </div>
               
               <div className="p-3 text-xs text-[#B5B8BC] text-center bg-[#161A1E] border-t border-white/10">
