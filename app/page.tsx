@@ -60,6 +60,13 @@ const skills = [
 ];
 
 const certs: Cert[] = [
+
+   {
+    name: "AWS Academy Graduate - Generative AI Foundations",
+    issuer: "Amazon Web Services",
+    verify: "https://www.credly.com/badges/78323cd6-3e05-43e4-8cdc-4c6a883f0f6e/public_url",
+    image: "/certs/aws-academy-graduate-generative-ai-foundations.png",
+  },
    {
     name: "AWS Academy Graduate - Machine Learning Foundations",
     issuer: "Amazon Web Services",
