@@ -63,7 +63,7 @@ const certs: Cert[] = [
 
 
   {
-    name: "WS Academy Graduate - Machine Learning for Natural Language Processing",
+    name: "AWS Academy Graduate - Machine Learning for Natural Language Processing",
     issuer: "Amazon Web Services",
     verify: "https://www.credly.com/badges/76a97f2c-08a4-4947-8d3e-0d8751ea44c9/public_url",
     image: "/certs/aws-academy-graduate-machine-learning-for-natural-l.png",
